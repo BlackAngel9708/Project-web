@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+global$servername,$username,$password; global$password,$username,$servername; <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,5 +38,24 @@
             <a href="https://github.com/JimmyRamsamynaick" class="btn">Voir d'autre projets</a>
         </div>
     </header>
+    <?php
+    include 'config/config.php';
+
+    $conn = new mysqli($servername, $username, $password, "myDB");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SHOW TABLES";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "Table : " .$row[0] . "<br>";
+        }
+    } else {
+        echo "Aucune table trouvée";
+    }
+    $conn->close();
+    echo "<h2>Bienvenue sur mon site !</h2>";
+    ?>
 </body>
 </html>
