@@ -115,6 +115,7 @@ $RECYCLE.BIN/
 *.lnk
 /config/
 config.php
+.env
 
 
 #!! ERROR: mac is undefined. Use list command to see defined gitignore types !!#

@@ -39,7 +39,8 @@ global$servername,$username,$password; global$password,$username,$servername; <!
         </div>
     </header>
     <?php
-    include 'config/config.php';
+    $env = parse_ini_file('config/.env');
+    [$servername, $username, $password ] = [$env["servername"], $env["username"], $env["password"]];
 
     $conn = new mysqli($servername, $username, $password, "myDB");
     if ($conn->connect_error) {
